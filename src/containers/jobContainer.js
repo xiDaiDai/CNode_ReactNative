@@ -1,53 +1,43 @@
- /**
-  * Sample React Native App
-  * https://github.com/facebook/react-native
-  * @flow
-  */
+import {
+  connect
+} from 'react-redux';
+import React, {
+  Component,
+} from 'react';
+import {
+  View,
+  StyleSheet
+} from 'react-native';
 
- import React, {
- 	Component
- } from 'react';
- import {
- 	AppRegistry,
- 	StyleSheet,
- 	Text,
- 	View
- } from 'react-native';
+import PopList from '../pages/jobList';
 
- export default class JobContainer extends Component {
- 	render() {
- 		return (
- 			<View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-         job
-        </Text>
+class JobContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <PopList {...this.props} ></PopList>
       </View>
- 		);
- 	}
- }
+    );
+  }
+}
 
- const styles = StyleSheet.create({
- 	container: {
- 		flex: 1,
- 		justifyContent: 'center',
- 		alignItems: 'center',
- 		backgroundColor: '#F5FCFF',
- 	},
- 	welcome: {
- 		fontSize: 20,
- 		textAlign: 'center',
- 		margin: 10,
- 	},
- 	instructions: {
- 		textAlign: 'center',
- 		color: '#333333',
- 		marginBottom: 5,
- 	},
- });
+function mapStateToProps(state) {
+  const {
+    job
+  } = state
+  return {
+    job
+  };
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white'
+  }
+});
+
+export default connect(mapStateToProps)(JobContainer);

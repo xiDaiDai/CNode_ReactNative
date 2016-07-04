@@ -55,8 +55,8 @@ class NewsList extends Component {
         <ListView ref = "listview"
           dataSource = {dataSource}
           renderRow = {(item) => this.renderRow(item)}
-          onEndReached = {()=>this.onEndReach()}
-          renderFooter = {() => this.renderFooter()}
+          onEndReached = {()=>this.onEndReach(ask.isLoading)}
+          renderFooter = {() => this.renderFooter(ask.isLoadingMore)}
           enableEmptySections = {true}
           automaticallyAdjustContentInsets = {false}
           keyboardDismissMode = "on-drag"
@@ -77,11 +77,13 @@ class NewsList extends Component {
     );
   }
 
-  renderFooter() {
-    return (<LoadingMore />);
+  renderFooter(isLoadingMore) {
+
+    return (isLoadingMore ? <LoadingMore /> : null);
   }
 
-  onEndReach() {
+  onEndReach(isLoading) {
+    if (isLoading) return;
     const {
       dispatch
     } = this.props;

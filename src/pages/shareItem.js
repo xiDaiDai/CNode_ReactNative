@@ -29,7 +29,7 @@ class PopItem extends Component {
         <View style={{backgroundColor:'white',flexDirection:'column'}}>
           <View style={{justifyContent:'center', flexDirection :'row',padding:10}}>
                <View style= {styles.leftContainer}>
-                  <Text style = {{fontSize:15,color:'#272822',lineHeight:25}}>{this.props.item.title}</Text>
+                  <Text style = {{fontSize:15,color:'#272822',lineHeight:25}} numberOfLines={2}>{this.props.item.title}</Text>
                   <View style = {{flex:1,justifyContent:'flex-end'}} >
                     <Text >{this.props.item.create_at}</Text>
                   </View>

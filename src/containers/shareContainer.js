@@ -9,7 +9,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import PopList from '../pages/askList';
+import PopList from '../pages/shareList';
 
 class ShareContainer extends Component {
   constructor(props) {
@@ -19,17 +19,17 @@ class ShareContainer extends Component {
     return (
       <View style={styles.container}>
         <PopList {...this.props} ></PopList>
-            </View>
+      </View>
     );
   }
 }
 
 function mapStateToProps(state) {
   const {
-    ask
+    share
   } = state
   return {
-    ask
+    share
   };
 }
 

@@ -10,31 +10,32 @@ const initialState = {
 
 const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCHING_ASK:
+    case types.FETCHING_JOB:
       return Object.assign({}, state, {
         isLoading: true,
       });
 
-    case types.FETCHING_NEXT_PAGE_ASK:
+    case types.FETCHING_NEXT_PAGE_JOB:
       return Object.assign({}, state, {
         isLoadingMore: true,
       });
 
 
-    case types.ERROR_GETTING_ASK:
+    case types.ERROR_GETTING_JOB:
       return Object.assign({}, state, {
         isLoading: false,
+        isLoadingMore: false,
         news: []
       });
 
-    case types.RECEIVED_DATA_ASK:
+    case types.RECEIVED_DATA_JOB:
       return Object.assign({}, state, {
         isLoading: false,
         isLoadingMore: false,
         news: action.data.data
       });
 
-    case types.RECEIVED_MORE_DATA_ASK:
+    case types.RECEIVED_MORE_DATA_JOB:
       return Object.assign({}, state, {
         isLoading: false,
         isLoadingMore: false,

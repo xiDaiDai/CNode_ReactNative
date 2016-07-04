@@ -2,9 +2,6 @@ import React, {
   Component
 } from "react"
 import {
-  connect
-} from "react-redux";
-import {
   StyleSheet,
   View,
   Text,
@@ -15,11 +12,11 @@ import {
   RefreshControl,
   ToolbarAndroid
 } from "react-native";
-import PopItem from './popItem';
+import PopItem from './shareItem';
 import {
   getNews,
   getNextPageNews
-} from '../actions/pop';
+} from '../actions/share';
 
 import LoadingMore from '../components/loadingMore';
 import NavigationBar from '../components/navigationBar';
@@ -36,7 +33,6 @@ class NewsList extends Component {
   }
 
   componentDidMount() {
-    console.log('getnews function');
     const {
       dispatch,
     } = this.props;
@@ -45,26 +41,26 @@ class NewsList extends Component {
 
   render() {
     const {
-      pop
+      share
     } = this.props;
-    let dataSource = this.state.dataSource.cloneWithRows(pop.news)
+    let dataSource = this.state.dataSource.cloneWithRows(share.news)
     return (
       <View style={styles.container}>
         <NavigationBar
-          title='精华'
+          title='分享'
           />
         <ListView ref = "listview"
           dataSource = {dataSource}
           renderRow = {(item) => this.renderRow(item)}
-          onEndReached = {()=>this.onEndReach(pop.isLoading)}
-          renderFooter = {() => this.renderFooter(pop.isLoadingMore)}
+          onEndReached = {()=>this.onEndReach(share.isLoading)}
+          renderFooter = {() => this.renderFooter(share.isLoadingMore)}
           enableEmptySections = {true}
           automaticallyAdjustContentInsets = {false}
           keyboardDismissMode = "on-drag"
           keyboardShouldPersistTaps = {true}
           refreshControl = {
             <RefreshControl
-                    refreshing={pop.isLoading}
+                    refreshing={share.isLoading}
                     onRefresh={()=>this.onRefresh()}
                     colors={['#272822']}/>
               }
@@ -84,7 +80,6 @@ class NewsList extends Component {
 
   onEndReach(isLoading) {
     if (isLoading) return;
-    console.log('onendReached function');
     const {
       dispatch
     } = this.props;
