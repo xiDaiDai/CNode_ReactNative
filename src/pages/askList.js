@@ -15,11 +15,11 @@ import {
   RefreshControl,
   ToolbarAndroid
 } from "react-native";
-import PopItem from './popItem';
+import PopItem from './askItem';
 import {
   getNews,
   getNextPageNews
-} from '../actions/pop';
+} from '../actions/ask';
 
 import LoadingMore from '../components/loadingMore';
 import NavigationBar from '../components/navigationBar';
@@ -44,13 +44,13 @@ class NewsList extends Component {
 
   render() {
     const {
-      pop
+      ask
     } = this.props;
-    let dataSource = this.state.dataSource.cloneWithRows(pop.news)
+    let dataSource = this.state.dataSource.cloneWithRows(ask.news)
     return (
       <View style={styles.container}>
         <NavigationBar
-          title='精华'
+          title='问答'
           />
         <ListView ref = "listview"
           dataSource = {dataSource}
@@ -63,7 +63,7 @@ class NewsList extends Component {
           keyboardShouldPersistTaps = {true}
           refreshControl = {
             <RefreshControl
-                    refreshing={pop.isLoading}
+                    refreshing={ask.isLoading}
                     onRefresh={()=>this.onRefresh()}
                     colors={['#272822']}/>
               }

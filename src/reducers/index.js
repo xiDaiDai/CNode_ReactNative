@@ -1,11 +1,13 @@
 'use strict';
 import {
-	combineReducers
+  combineReducers
 } from 'redux';
 import pop from './pop';
+import ask from './ask';
 
 const rootReducer = combineReducers({
-	pop
+  pop,
+  ask
 });
 
 export default rootReducer;

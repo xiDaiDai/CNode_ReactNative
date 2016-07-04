@@ -37,8 +37,8 @@ export default class Home extends Component {
 		           backgroundColor="#444444"
 		           barStyle="light-content"
 		           hidden ={false}/>
-		       
-		      <ScrollableTabView  
+
+		      <ScrollableTabView
 		          tabBarBackgroundColor='#444444'
 		          tabBarUnderlineColor='transparent'
 		          tabBarActiveTextColor='#80BD01'
