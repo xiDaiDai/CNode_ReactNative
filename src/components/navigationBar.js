@@ -35,11 +35,12 @@ export default class NavigationBar extends Component {
     return (
       <View style = {styles.navBar}>
         {this.props.backHidden?<View style={styles.buttonWrapper}/>:
-        <TouchableOpacity style={styles.backWrapper} onPress={this.props.backFunc}>
+        <TouchableOpacity style={styles.buttonWrapper} onPress={this.props.backFunc}>
           <Image style={styles.icon} source={this.props.backIcon}></Image>
         </TouchableOpacity>}
         <Text style={styles.title} numberOfLines={1}>{this.props.title}</Text>
-        {this.props.actionHidden?<View style={styles.buttonWrapper}/>:<TouchableOpacity style={styles.actionBtn} onPress={this.props.actionFunc}>
+    {
+      this.props.actionHidden ? <View style={styles.buttonWrapper}/> : <TouchableOpacity style={styles.buttonWrapper} onPress={this.props.actionFunc}>
           <Image style={styles.icon} source={this.props.actionIcon}></Image>
         </TouchableOpacity>}
       </View>)

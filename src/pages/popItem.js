@@ -15,6 +15,8 @@ import {
   View
 } from 'react-native';
 
+import NewsDetailContainer from '../containers/detailContainer';
+
 class PopItem extends Component {
 
   constructor(props) {
@@ -49,11 +51,10 @@ class PopItem extends Component {
 
 
   selectItem(item) {
-    // this.props.navigator.push({
-    //  name: 'news',
-    //  item: item,
-    //  component: NewsDetailContainer,
-    // });
+    this.props.navigator.push({
+      item: item,
+      component: NewsDetailContainer,
+    });
   }
 }
 const styles = StyleSheet.create({
