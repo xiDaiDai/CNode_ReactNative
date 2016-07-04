@@ -27,11 +27,13 @@ class PopItem extends Component {
             underlayColor='white'
             onPress={() => {this.selectItem(this.props.item)}} >
         <View style={{backgroundColor:'white',flexDirection:'column'}}>
-          <View style={{justifyContent:'center', flexDirection :'row',padding:10}}>
+          <View style={{justifyContent:'center',alignItems:'center', flexDirection :'row',padding:10}}>
                <View style= {styles.leftContainer}>
-                  <Text style = {{fontSize:15,color:'#272822',lineHeight:25}}>{this.props.item.title}</Text>
-                  <View style = {{flex:1,justifyContent:'flex-end'}} >
-                    <Text >{this.props.item.create_at}</Text>
+                  <Text style = {{fontSize:15,color:'#272822',lineHeight:25}} numberOfLines={2}>{this.props.item.title}</Text>
+                  <View style = {{flex:1,alignItems:'flex-end',justifyContent:'flex-start',flexDirection:'row'}} >
+                     <Text style={{paddingLeft:5,flex:1}}>回复:{this.props.item.reply_count}</Text>
+                     <Text style={{paddingLeft:5,flex:1}}>浏览:{this.props.item.visit_count}</Text>
+                     <Text style={{paddingLeft:5,textAlign:'right',flex:1}}>{this.props.item.create_at.substring(0,10)}</Text>
                   </View>
                </View>
                <Image
@@ -60,16 +62,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   leftContainer: {
-    height: 60,
+    height: 70,
     flexDirection: 'column',
     flex: 1,
     marginRight: 5,
     backgroundColor: 'white',
+    justifyContent: 'center',
   },
   thumbnail: {
     width: 60,
     height: 60,
-    borderRadius: 30
+    borderRadius: 30,
+    justifyContent: 'center',
   },
 });
 

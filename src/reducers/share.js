@@ -1,7 +1,7 @@
 import * as types from "../constants/appType";
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   isLoadingMore: false,
   hasNewsToDisplay: false,
   news: [],

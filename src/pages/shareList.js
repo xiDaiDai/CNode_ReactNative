@@ -57,6 +57,7 @@ class NewsList extends Component {
           enableEmptySections = {true}
           automaticallyAdjustContentInsets = {false}
           keyboardDismissMode = "on-drag"
+          onEndReachedThreshold={30}
           keyboardShouldPersistTaps = {true}
           refreshControl = {
             <RefreshControl
