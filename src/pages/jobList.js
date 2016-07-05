@@ -12,7 +12,7 @@ import {
   RefreshControl,
   ToolbarAndroid
 } from "react-native";
-import PopItem from './jobItem';
+import PopItem from './askItem';
 import {
   getNews,
   getNextPageNews

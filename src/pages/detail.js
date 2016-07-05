@@ -45,22 +45,23 @@ class NewsDetail extends Component {
       detail,
       route
     } = this.props;
-    console.log(detail);
-    if (detail.isLoading) return (<Loading/>);
     return (
       <View style={styles.container}>
-      <NavigationBar
+        <NavigationBar
           title='detail'
           backFunc={()=>this.backAndroid()}
           backHidden = {false}
           backIcon = {require('../images/ic_arrow_back_white_18dp.png')}
           />
-             <WebView javaScriptEnabled={true}
-                      automaticallyAdjustContentInsets={true}
-                       source={{html: detail.data.data.content}}
-                      style={{margin:5}}
-                      />
-         </View>
+
+        {detail.isLoading?<Loading/>:
+          <WebView
+            javaScriptEnabled={true}
+            automaticallyAdjustContentInsets={true}
+            source={{html: detail.data.data.content}}
+            style={{margin:5}}
+        />}
+      </View>
     );
   }
 
