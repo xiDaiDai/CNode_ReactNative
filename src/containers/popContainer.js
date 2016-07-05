@@ -19,7 +19,7 @@ class PopContainer extends Component {
 		return (
 			<View style={styles.container}>
 				<PopList {...this.props} ></PopList>
-          	</View>
+      </View>
 		);
 	}
 }

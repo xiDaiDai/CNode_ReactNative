@@ -5,6 +5,7 @@ import React, {
 } from 'react'
 
 import NewsDetailContainer from '../containers/detailContainer';
+import UserContainer from '../containers/userContainer';
 import CommontItem from '../components/commonItem';
 
 class PopItem extends Component {
@@ -19,7 +20,11 @@ class PopItem extends Component {
     } = this.props;
 
     return (
-      <CommontItem onItemSelected = {()=>this.selectItem(item)} item = {item} />
+      <CommontItem
+        onItemSelected = {()=>this.selectItem(item)}
+        item = {item}
+        onUserSelected = {()=>this.selectUser(item)}
+        />
 
     );
   }
@@ -28,6 +33,14 @@ class PopItem extends Component {
     this.props.navigator.push({
       item: item,
       component: NewsDetailContainer,
+    });
+  }
+
+
+  selectUser(item) {
+    this.props.navigator.push({
+      item: item,
+      component: UserContainer,
     });
   }
 }

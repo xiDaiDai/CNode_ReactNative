@@ -45,10 +45,12 @@ class NewsDetail extends Component {
       detail,
       route
     } = this.props;
+    console.log(detail);
+
     return (
       <View style={styles.container}>
         <NavigationBar
-          title='detail'
+          title={route.item.title}
           backFunc={()=>this.backAndroid()}
           backHidden = {false}
           backIcon = {require('../images/ic_arrow_back_white_18dp.png')}

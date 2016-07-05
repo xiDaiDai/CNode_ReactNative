@@ -7,6 +7,7 @@ import ask from './ask';
 import share from './share';
 import job from './job';
 import detail from './detail';
+import user from './user';
 
 const rootReducer = combineReducers({
   pop,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   share,
   job,
   detail,
+  user
 });
 
 export default rootReducer;
