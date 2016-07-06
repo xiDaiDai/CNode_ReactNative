@@ -23,6 +23,7 @@ import {
 
 import NavigationBar from '../components/navigationBar';
 import Loading from '../components/loadingMore';
+import Comments from './comments';
 
 class NewsDetail extends Component {
   constructor(props) {
@@ -43,7 +44,8 @@ class NewsDetail extends Component {
 
     const {
       detail,
-      route
+      route,
+      dispatch
     } = this.props;
     console.log(detail);
 
@@ -54,6 +56,9 @@ class NewsDetail extends Component {
           backFunc={()=>this.backAndroid()}
           backHidden = {false}
           backIcon = {require('../images/ic_arrow_back_white_18dp.png')}
+          actionHidden={false}
+          actionIcon={require('../images/ic_comment_white_36dp.png')}
+          actionFunc={()=>this.showComments(detail.data.data.replies,dispatch)}
           />
 
         {detail.isLoading?<Loading/>:
@@ -69,6 +74,14 @@ class NewsDetail extends Component {
 
   backAndroid() {
     this.props.navigator.pop();
+  }
+
+  showComments(replies, dispatch) {
+    this.props.navigator.push({
+      replies: replies,
+      dispatch: dispatch,
+      component: Comments,
+    });
   }
 
 
