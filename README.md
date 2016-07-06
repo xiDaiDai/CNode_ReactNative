@@ -4,8 +4,8 @@ CNode Community Simple  App
  * ES 6
  * Redux
 <p><a href="https://cnodejs.org/">CNode</a>
-<p> apk is coming soon
+<p>apk is coming soon
 
-#Lience
+#License
 <p>MIT
 
