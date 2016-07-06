@@ -24,6 +24,7 @@ import {
 import NavigationBar from '../components/navigationBar';
 import Loading from '../components/loadingMore';
 import Comments from './comments';
+import Markdown from 'react-markdown-native';
 
 class NewsDetail extends Component {
   constructor(props) {
@@ -42,15 +43,15 @@ class NewsDetail extends Component {
 
   render() {
 
-    const {
-      detail,
-      route,
-      dispatch
-    } = this.props;
-    console.log(detail);
+      const {
+        detail,
+        route,
+        dispatch
+      } = this.props;
+      console.log(detail);
 
-    return (
-      <View style={styles.container}>
+      return (
+        <View style={styles.container}>
         <NavigationBar
           title={route.item.title}
           backFunc={()=>this.backAndroid()}
@@ -62,15 +63,18 @@ class NewsDetail extends Component {
           />
 
         {detail.isLoading?<Loading/>:
-          <WebView
-            javaScriptEnabled={true}
-            automaticallyAdjustContentInsets={true}
-            source={{html: detail.data.data.content}}
-            style={{margin:5}}
-        />}
+
+      <WebView
+                javaScriptEnabled={true}
+                automaticallyAdjustContentInsets={true}
+                source={{html: detail.data.data.content}}
+                style={{margin:5}}/>
+
+        }
       </View>
-    );
-  }
+      );
+    }
+
 
   backAndroid() {
     this.props.navigator.pop();

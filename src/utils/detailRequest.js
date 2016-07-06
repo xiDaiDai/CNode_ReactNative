@@ -12,7 +12,10 @@ class NewsService {
 
   fetchNews(dispatch, id) {
 
-    let url = detail_url + id;
+    let url =
+      detail_url +
+      id + '?mdrender=true';
+    console.log(url);
     fetch(url)
       .then((response) => response.json())
       .catch((error) => {

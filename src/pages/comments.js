@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Comment from './commentItem';
 import NavigationBar from '../components/navigationBar';
+import Loading from '../components/loadingMore';
 
 
 class Comments extends Component {
@@ -20,6 +21,7 @@ class Comments extends Component {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
+      isLoading: true
     };
   }
 
@@ -28,10 +30,15 @@ class Comments extends Component {
       route,
     } = this.props;
 
-    let dataSource = this.state.dataSource.cloneWithRows(route.replies)
-    this.setState({
-      dataSource: dataSource
-    });
+    setTimeout(() => {
+      let dataSource = this.state.dataSource.cloneWithRows(route.replies)
+      this.setState({
+        dataSource: dataSource,
+        isLoading: false
+      });
+    }, 2500);
+
+
 
   }
 
@@ -45,14 +52,16 @@ class Comments extends Component {
             backHidden = {false}
             backIcon = {require('../images/ic_arrow_back_white_18dp.png')}
             />
-        <ListView ref = "listview"
-            dataSource = {this.state.dataSource}
-            renderRow = {(item) => this.renderRow(item)}
-            enableEmptySections = {true}
-            automaticallyAdjustContentInsets = {false}
-            keyboardDismissMode = "on-drag"
-            keyboardShouldPersistTaps = {true}
-              />
+            {this.state.isLoading?<Loading/>:
+              <ListView ref = "listview"
+                  dataSource = {this.state.dataSource}
+                  renderRow = {(item) => this.renderRow(item)}
+                  enableEmptySections = {true}
+                  automaticallyAdjustContentInsets = {false}
+                  keyboardDismissMode = "on-drag"
+                  keyboardShouldPersistTaps = {true}
+              />}
+
       </View>);
   }
 

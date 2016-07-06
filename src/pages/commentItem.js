@@ -12,20 +12,47 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
   ToastAndroid,
-  View
+  View,
+  WebView,
+  NativeModules
 } from 'react-native';
+import * as device from '../constants/device';
+import Markdown from 'react-markdown-native';
+import HtmlRender from '../components/htmlModule';
 
 class CommentItem extends Component {
-
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: true,
+      textString: '',
+    }
   }
 
-  render() {
-
+  componentDidMount() {
     const {
       item
     } = this.props;
+
+    HtmlRender.renderHtml(item.content).then((textString) => {
+      this.setState({
+        isLoading: false,
+        textString: textString
+      });
+    }, (err) => {
+
+    });
+
+  }
+
+  render() {
+    const {
+      item
+    } = this.props;
+
+    if (this.state.isLoading) {
+      return <View/>
+    }
 
     return (
       <View style={{backgroundColor:'white',flexDirection:'column'}}>
@@ -45,11 +72,14 @@ class CommentItem extends Component {
                </View>
             </View>
           </View>
-          <Text style = {{fontSize:15,color:'#272822',marginLeft:10,marginRight:10,marginBottom:10}}>{item.content}</Text>
+          <Text style = {{marginLeft:10,marginRight:10,color:'#444'}}>{this.state.textString}</Text>
           <View style={{backgroundColor:'#d8d8d8',height:1,flexDirection: 'row'}}/>
         </View>
     );
+
+
   }
+
 
 }
 const styles = StyleSheet.create({
