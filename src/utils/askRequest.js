@@ -4,6 +4,10 @@ import {
   retrievedMoreNews
 } from '../actions/ask'
 
+import {
+  ToastAndroid
+} from 'react-native';
+
 
 const baseUrl = "https://cnodejs.org/api/v1/topics?limit=15&tab=ask&page=";
 
@@ -19,11 +23,11 @@ class NewsService {
     let url = baseUrl + this.pageNumber;
     fetch(url)
       .then((response) => response.json())
-      .catch((error) => {
-        dispatch(errorOnReceivingNews());
-      })
       .then((responseData) => {
         dispatch(retrievedNews(responseData));
+      }).catch((err) => {
+        dispatch(errorOnReceivingNews());
+        ToastAndroid.show("网络异常", 3000)
       }).done();
   }
 
@@ -32,11 +36,11 @@ class NewsService {
     let url = baseUrl + this.pageNumber;
     fetch(url)
       .then((response) => response.json())
-      .catch((error) => {
-        dispatch(errorOnReceivingNews());
-      })
       .then((responseData) => {
         dispatch(retrievedMoreNews(responseData));
+      }).catch((err) => {
+        ToastAndroid.show("网络异常", 3000)
+
       }).done();
   }
 

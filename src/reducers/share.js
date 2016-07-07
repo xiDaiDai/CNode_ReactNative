@@ -23,7 +23,7 @@ const newsReducer = (state = initialState, action) => {
 
     case types.ERROR_GETTING_SHARE:
       return Object.assign({}, state, {
-        isLoading: false,
+        isLoading: true,
         isLoadingMore: false,
         news: []
       });

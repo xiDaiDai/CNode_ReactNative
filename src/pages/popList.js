@@ -36,7 +36,6 @@ class NewsList extends Component {
   }
 
   componentDidMount() {
-    console.log('getnews function');
     const {
       dispatch,
     } = this.props;
