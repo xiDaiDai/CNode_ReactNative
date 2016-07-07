@@ -12,6 +12,10 @@ CNode Community Simple  App
 <img src="https://github.com/xiDaiDai/Nodist_RN/blob/master/screenshots/device-2016-07-06-175650.png" height="270" width="150" />
 </p>
 <p> 
+
+<p>How to run on Android
+* npm install
+* react-native run-android
  
 
 #License
