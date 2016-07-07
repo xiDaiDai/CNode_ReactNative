@@ -17,7 +17,6 @@ import {
   NativeModules
 } from 'react-native';
 import * as device from '../constants/device';
-import Markdown from 'react-markdown-native';
 import HtmlRender from '../components/htmlModule';
 
 class CommentItem extends Component {
