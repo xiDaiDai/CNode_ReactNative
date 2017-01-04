@@ -24,5 +24,5 @@ CNode Community Simple  App
  
 
 #License
-<p>MIT
+<p>fxxking license
 
